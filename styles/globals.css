@@ -1,3 +1,117 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.card_outer {
+  position: relative;
+  user-select: none;
+  overflow: hidden;
+  /* overflow-x: auto; */
+  width: 400px;
+  height: 520px;
+  /* box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23); */
+  box-shadow: 0 0 20px 0 rgb(0 0 0 / 28%);
+  border-radius: 10px;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  -ms-border-radius: 10px;
+  -o-border-radius: 10px;
+}
+
+.card_content_cover {
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0), rgba(0, 0, 0, 1));
+  position: absolute;
+  width: 100%;
+  height: 65%;
+  bottom: 0;
+  padding: 5px;
+  z-index: -1;
+}
+
+.cover {
+  position: relative;
+  background-image: url('https://media.istockphoto.com/photos/blue-mesh-gradient-blurred-motion-abstract-background-picture-id1185747322?k=20&m=1185747322&s=612x612&w=0&h=Sy7s4nSTKEbDFY1HRAijhMJVRZd4_9rACOOjkkNa5bs=');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  width: 430px;
+  height: 540px;
+}
+
+.card_content {
+  width: 100%;
+}
+
+.card_outer .card_content h1 {
+  /* margin-top: 15px; */
+  font-size: 1.3rem;
+  width: 100%;
+  /* white-space: nowrap;
+    overflow: hidden; */
+  display: block;
+  text-overflow: ellipsis;
+  /* font-family: "Kanit", sans-serif; */
+  /* color: black; */
+  mix-blend-mode: hard-light;
+}
+
+.card_content .genre p {
+  letter-spacing: 0.2px;
+  /* font-family: "Commissioner", sans-serif; */
+  white-space: nowrap;
+}
+
+.genre {
+  display: flex;
+  overflow-x: auto;
+  width: 100%;
+  cursor: pointer;
+  scrollbar-width: none;
+}
+
+.genre::-webkit-scrollbar {
+  /* width: 0;
+    height: 0; */
+  display: none;
+}
+
+.genre::-moz-scrollbar {
+  width: 0;
+  height: 0;
+}
+
+.genre_item {
+  /* width: fit-content; */
+  /* overflow: hidden;
+    text-overflow: ellipsis; */
+  white-space: nowrap;
+}
+
+.card_details {
+  display: flex;
+  width: 100%;
+  font-size: 0.9rem;
+  justify-content: space-between;
+  /* flex-direction: row-reverse; */
+}
+
+.card_rating {
+  justify-content: center;
+  align-items: center;
+  width: 20%;
+  display: flex;
+  /* font-size: 1rem; */
+  font-weight: 100;
+}
+
+.card_rating i {
+  margin-left: 3px;
+  /* font-size: 0.8rem; */
+}

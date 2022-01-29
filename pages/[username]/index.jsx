@@ -83,9 +83,15 @@ const index = ({ data }) => {
                 </a>
               </div>
               <div className="mt-auto">
-                <div className="my-4 flex flex-col leading-3">
-                  <div className="text-3xl font-bold">{data.commits}</div>
-                  <div className="font-semibold">Commits</div>
+                <div className="flex gap-8">
+                  <div className="my-4 flex flex-col leading-3">
+                    <div className="text-3xl font-bold">{data.commits}</div>
+                    <div className="font-semibold">Commits</div>
+                  </div>
+                  <div className="my-4 flex flex-col leading-3">
+                    <div className="text-3xl font-bold">{data.forks}</div>
+                    <div className="font-semibold">Forks</div>
+                  </div>
                 </div>
                 <div className="my-4 flex w-full justify-between font-semibold">
                   <div className="flex flex-col items-center justify-start gap-1 leading-3">
@@ -187,28 +193,28 @@ export async function getServerSideProps(context) {
     },
   }
 
-  // return {
-  //   props: {
-  //     username: 'N-Deepika',
-  //     avatar: 'https://avatars.githubusercontent.com/u/66058598?v=4',
-  //     commits: 181,
-  //     stars: 0,
-  //     followers: 16,
-  //     following: 14,
-  //     repos: 27,
-  //     languages: {
-  //       JavaScript: 7,
-  //       Python: 3,
-  //       CSS: 2,
-  //       EJS: 3,
-  //       HTML: 2,
-  //       'Jupyter Notebook': 4,
-  //     },
-  //     created: '2020-05-28T07:48:56Z',
-  //     totalIssues: 0,
-  //     totalPulls: 7,
-  //   },
-  // }
+  return {
+    props: {
+      username: 'N-Deepika',
+      avatar: 'https://avatars.githubusercontent.com/u/66058598?v=4',
+      commits: 181,
+      stars: 0,
+      followers: 16,
+      following: 14,
+      repos: 27,
+      languages: {
+        JavaScript: 7,
+        Python: 3,
+        CSS: 2,
+        EJS: 3,
+        HTML: 2,
+        'Jupyter Notebook': 4,
+      },
+      created: '2020-05-28T07:48:56Z',
+      totalIssues: 0,
+      totalPulls: 7,
+    },
+  }
 }
 
 export default index

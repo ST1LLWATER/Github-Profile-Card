@@ -97,7 +97,7 @@ progress::-webkit-progress-value {
   align-items: center;
 }
 
-@media (max-width: 380px) {
+@media (max-width: 455px) {
   .cover {
     height: 480px;
     width: 360px;

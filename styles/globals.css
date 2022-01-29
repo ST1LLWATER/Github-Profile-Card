@@ -8,13 +8,43 @@
   box-sizing: border-box;
 }
 
+progress {
+  border-radius: 7px;
+  width: 80%;
+  box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.2);
+  height: 7px;
+}
+progress::-webkit-progress-bar {
+  background: #20bdff;
+
+  border-radius: 7px;
+}
+progress::-webkit-progress-value {
+  transition: 0.3s width;
+
+  background: #ffe259; /* fallback for old browsers */
+  background: -webkit-linear-gradient(
+    to right,
+    #ffa751,
+    #ffe259
+  ); /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(
+    to right,
+    #ffa751,
+    #ffe259
+  ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  border-radius: 7px;
+}
+
 .card_outer {
   position: relative;
   user-select: none;
   overflow: hidden;
   /* overflow-x: auto; */
-  width: 400px;
-  height: 520px;
+  /* min-width: 400px;
+  min-height: 520px; */
+  width: 93%;
+  height: 93%;
   /* box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23); */
   box-shadow: 0 0 20px 0 rgb(0 0 0 / 28%);
   border-radius: 10px;
@@ -41,8 +71,13 @@
   background-position: center;
   background-repeat: no-repeat;
   background-attachment: fixed;
-  width: 430px;
-  height: 540px;
+  height: 560px;
+  width: 440px;
+  min-width: 440px;
+  min-height: 560px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .card_content {

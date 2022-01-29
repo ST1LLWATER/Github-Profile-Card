@@ -1,16 +1,23 @@
 import React, { useEffect, useRef, useState } from 'react'
 import { AiTwotoneStar, AiOutlineIssuesClose } from 'react-icons/ai'
-import { BsFillPeopleFill } from 'react-icons/bs'
 import { BiGitPullRequest } from 'react-icons/bi'
 import { GoRepo } from 'react-icons/go'
+import Tilt from 'react-parallax-tilt'
 
 const index = (data) => {
   console.log(data)
   const [languages, setLanguages] = useState([])
-  console.log(languages)
+  const [allLanguages, setAllLanguages] = useState([])
+  // let languages = Object.keys(data.languages)
+  // let allLanguages = [...languages]
+  // languages.splice(3, languages.length)
 
   useEffect(() => {
-    setLanguages(Object.keys(data.languages))
+    let languages = Object.keys(data.languages)
+    let allLanguages = [...languages]
+    setAllLanguages(allLanguages)
+    languages.splice(3, languages.length)
+    setLanguages(languages)
   }, [])
 
   const slider = useRef(null)
@@ -42,83 +49,100 @@ const index = (data) => {
   }
   return (
     <>
-      <div className="cover relative">
-        <div className="absolute flex h-screen w-screen items-center justify-center overflow-hidden rounded text-black">
-          <div
-            className="card_outer z-10 flex flex-col p-4"
-            style={{
-              background: `linear-gradient(0deg, rgba(0, 0, 0, 0.08), rgba(0, 0, 0, 0.08))`,
-            }}
-          >
-            <div className="my-2 flex items-center justify-start gap-3">
-              <div className="w-14 overflow-hidden rounded-full">
-                <img
-                  className="object-cover"
-                  src="https://avatars.githubusercontent.com/u/583231?v=4"
-                  alt="octocat"
-                />
-              </div>
-              <h1 className="text-3xl font-bold">{`@${data.username}`}</h1>
-            </div>
-            <div className="mt-auto">
-              <div className="my-2 flex flex-col leading-3">
-                <div className="text-3xl font-semibold">{data.commits}</div>
-                <div>Commits</div>
-              </div>
-              <div className="my-2 flex w-full justify-between">
-                <div className="flex flex-col items-center justify-start gap-1 leading-3">
-                  <div className="flex items-center gap-1">
-                    <AiTwotoneStar /> Stars
-                  </div>
-                  <div>{data.stars}</div>
+      <div className="flex h-screen w-screen items-center justify-center overflow-hidden rounded text-white">
+        <Tilt tiltMaxAngleX={8} tiltMaxAngleY={8}>
+          <div className="cover rounded-2xl">
+            <div
+              styles={{
+                background: `linear-gradient(0deg, rgba(0, 0, 0, 0.08), rgba(0, 0, 0, 0.08)),
+    url(${data.url}) no-repeat center center/cover`,
+              }}
+              className="card_outer h-11/12 z-10 flex flex-col bg-gray-800 p-4"
+            >
+              <div className="my-2 flex items-center justify-start gap-3">
+                <div className="w-14 overflow-hidden rounded-full">
+                  <img
+                    className="object-cover"
+                    src="https://avatars.githubusercontent.com/u/583231?v=4"
+                    alt="octocat"
+                  />
                 </div>
-                <div className="flex flex-col items-center justify-start gap-1 leading-3">
-                  <div className="flex items-center gap-1">
-                    <BiGitPullRequest />
-                    Pull Req
-                  </div>
-                  <div>{data.totalPulls}</div>
+                <h1 className="text-3xl font-bold">{`@${data.username}`}</h1>
+              </div>
+              <div className="mt-auto">
+                <div className="my-4 flex flex-col leading-3">
+                  <div className="text-3xl font-semibold">{data.commits}</div>
+                  <div>Commits</div>
                 </div>
+                <div className="my-4 flex w-full justify-between">
+                  <div className="flex flex-col items-center justify-start gap-1 leading-3">
+                    <div className="flex items-center gap-1">
+                      <AiTwotoneStar /> Stars
+                    </div>
+                    <div>{data.stars}</div>
+                  </div>
+                  <div className="flex flex-col items-center justify-start gap-1 leading-3">
+                    <div className="flex items-center gap-1">
+                      <BiGitPullRequest />
+                      Pull Req
+                    </div>
+                    <div>{data.totalPulls}</div>
+                  </div>
 
-                <div className="flex flex-col items-center justify-start gap-1 leading-3">
-                  <div className="flex items-center gap-1">
-                    <AiOutlineIssuesClose /> Issues
+                  <div className="flex flex-col items-center justify-start gap-1 leading-3">
+                    <div className="flex items-center gap-1">
+                      <AiOutlineIssuesClose /> Issues
+                    </div>
+                    <div>{data.totalIssues}</div>
                   </div>
-                  <div>{data.totalIssues}</div>
-                </div>
 
-                <div className="flex flex-col items-center justify-start gap-1 leading-3">
-                  <div className="flex items-center gap-1">
-                    <GoRepo />
-                    Repos
+                  <div className="flex flex-col items-center justify-start gap-1 leading-3">
+                    <div className="flex items-center gap-1">
+                      <GoRepo />
+                      Repos
+                    </div>
+                    <div>{data.repos}</div>
                   </div>
-                  <div>{data.repos}</div>
                 </div>
-              </div>
-              <div className="my-2 flex justify-between">
-                <div className="">Following: {`${data.following}`}</div>
-                <div>Followers: {`${data.followers}`}</div>
-              </div>
-              <div
-                className="genre mb-2"
-                ref={slider}
-                onMouseDown={startDragging}
-                onMouseUp={stopDragging}
-                onMouseLeave={stopDragging}
-                onMouseMove={mouseMoveEvent}
-              >
-                {languages.map((language, index) => (
-                  <p
-                    key={index}
-                    className="genre_item my-1 mr-2 rounded-full bg-gray-800 bg-opacity-80 py-1 px-3 text-sm text-white"
-                  >
-                    {language}
-                  </p>
-                ))}
+                <div className="my-4 flex justify-between">
+                  <div className="">Following: {`${data.following}`}</div>
+                  <div>Followers: {`${data.followers}`}</div>
+                </div>
+                <div>
+                  {languages.map((language) => {
+                    return (
+                      <>
+                        <div className="my-2 leading-4">
+                          <div>{language}</div>
+                          <progress id="progress" value="10" max="100">
+                            30%
+                          </progress>
+                        </div>
+                      </>
+                    )
+                  })}
+                </div>
+                <div
+                  className="genre mb-2"
+                  ref={slider}
+                  onMouseDown={startDragging}
+                  onMouseUp={stopDragging}
+                  onMouseLeave={stopDragging}
+                  onMouseMove={mouseMoveEvent}
+                >
+                  {allLanguages.map((language, index) => (
+                    <p
+                      key={index}
+                      className="genre_item my-1 mr-2 rounded-full bg-gray-700 bg-opacity-80 py-1 px-3 text-sm text-white"
+                    >
+                      {language}
+                    </p>
+                  ))}
+                </div>
               </div>
             </div>
           </div>
-        </div>
+        </Tilt>
       </div>
     </>
   )
@@ -126,10 +150,10 @@ const index = (data) => {
 
 export async function getServerSideProps(context) {
   const { username } = context.query
-  const res = await fetch(
-    `https://Github-Profile-Card-Server.st1llwater.repl.co/api/stats/${username}`
-  )
-  const data = await res.json()
+  // const res = await fetch(
+  //   `https://Github-Profile-Card-Server.st1llwater.repl.co/api/stats/${username}`
+  // )
+  // const data = await res.json()
 
   return {
     props: {

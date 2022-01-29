@@ -1,27 +1,23 @@
-# Next.js + Tailwind CSS Example
+<p align="center">
+ <img src="https://i.imgur.com/0d3pAZP.png" align="center" alt="GitHub Readme Stats" />
+ <hr>
+</p>
 
-This example shows how to use [Tailwind CSS](https://tailwindcss.com/) [(v3.0)](https://tailwindcss.com/blog/tailwindcss-v3) with Next.js. It follows the steps outlined in the official [Tailwind docs](https://tailwindcss.com/docs/guides/nextjs).
+## Dynamically [Generate](https://github-profile-card-omega.vercel.app/) Your GitHub Profile Card
+
 
 ## Preview
+| Card | Profile Card API Schema |
+|---|---|
+| <img src="./assets/profile-card.gif" align="center" alt="GitHub Readme Stats" width=400/>| `Avatar`<br><br>`Total Commits`<br><br>`Total Stars`<br><br>`Followers`<br><br>`Following`<br><br>`Repositories (Public)`<br><br>`Top Languages`<br><br>`Total Issues`<br><br>`Total Pull Requests`<br><br>`Forks` |
 
-Preview the example live on [StackBlitz](http://stackblitz.com/):
-
-[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/vercel/next.js/tree/canary/examples/with-tailwindcss)
-
-## Deploy your own
-
-Deploy the example using [Vercel](https://vercel.com?utm_source=github&utm_medium=readme&utm_campaign=next-example):
-
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/git/external?repository-url=https://github.com/vercel/next.js/tree/canary/examples/with-tailwindcss&project-name=with-tailwindcss&repository-name=with-tailwindcss)
-
-## How to use
-
-Execute [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app) with [npm](https://docs.npmjs.com/cli/init) or [Yarn](https://yarnpkg.com/lang/en/docs/cli/create/) to bootstrap the example:
-
-```bash
-npx create-next-app --example with-tailwindcss with-tailwindcss-app
-# or
-yarn create next-app --example with-tailwindcss with-tailwindcss-app
+### API Endpoint
+```
+https://ghdevcard.herokuapp.com/api/stats/${username}
 ```
 
-Deploy it to the cloud with [Vercel](https://vercel.com/new?utm_source=github&utm_medium=readme&utm_campaign=next-example) ([Documentation](https://nextjs.org/docs/deployment)).
+### How we did it
+- Making use of GitHub's API to retrieve information about a user and present it visually.
+- Technologies Used -
+  - Front-end: **NextJS** and **Tailwind CSS**
+  - Back-end: **ExpressJS**

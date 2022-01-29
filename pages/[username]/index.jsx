@@ -2,9 +2,11 @@ import React, { useEffect, useRef, useState } from 'react'
 import { AiTwotoneStar, AiOutlineIssuesClose } from 'react-icons/ai'
 import { BiGitPullRequest } from 'react-icons/bi'
 import { GoRepo } from 'react-icons/go'
+import { BsFillPeopleFill } from 'react-icons/bs'
+import bg from '../../assets/design-tools.jpg'
 import Tilt from 'react-parallax-tilt'
 
-const index = (data) => {
+const index = ({ data }) => {
   console.log(data)
   const [languages, setLanguages] = useState([])
   const [allLanguages, setAllLanguages] = useState([])
@@ -14,7 +16,11 @@ const index = (data) => {
   // languages.splice(3, languages.length)
 
   useEffect(() => {
-    let languages = Object.keys(data.languages)
+    const keysSorted = Object.keys(data.languages).sort(function (a, b) {
+      return data.languages[b] - data.languages[a]
+    })
+    console.log(keysSorted)
+    let languages = keysSorted
     let allLanguages = [...languages]
     setAllLanguages(allLanguages)
     languages.splice(3, languages.length)
@@ -57,16 +63,11 @@ const index = (data) => {
   return (
     <>
       <div className="flex h-screen w-screen items-center justify-center overflow-hidden rounded text-white">
+        <div className="bg absolute h-screen w-screen"></div>
         <Tilt tiltMaxAngleX={8} tiltMaxAngleY={8}>
           <div className="cover rounded-2xl">
-            <div
-              styles={{
-                background: `linear-gradient(0deg, rgba(0, 0, 0, 0.08), rgba(0, 0, 0, 0.08)),
-    url(${data.url}) no-repeat center center/cover`,
-              }}
-              className="card_outer h-11/12 z-10 flex flex-col bg-gray-800 p-4"
-            >
-              <div className="absolute right-[-15px] top-20 z-[-1] w-72 overflow-hidden rounded-full opacity-50">
+            <div className="card_outer h-11/12 z-10 flex flex-col bg-gray-800 p-4">
+              <div className="absolute right-[-15px] top-20 z-[-1] w-80 overflow-hidden rounded-full opacity-50">
                 <img className="object-cover" src={data.avatar} alt="" />
               </div>
               <div className="my-2 flex items-center justify-start gap-3">
@@ -77,12 +78,14 @@ const index = (data) => {
                     alt="octocat"
                   />
                 </div>
-                <h1 className="text-3xl font-bold">{`@${data.username}`}</h1>
+                <a target="_blank" href={`https://github.com/${data.username}`}>
+                  <h1 className="text-3xl font-bold">{`@${data.username}`}</h1>
+                </a>
               </div>
               <div className="mt-auto">
                 <div className="my-4 flex flex-col leading-3">
-                  <div className="text-3xl font-semibold">{data.commits}</div>
-                  <div>Commits</div>
+                  <div className="text-3xl font-bold">{data.commits}</div>
+                  <div className="font-semibold">Commits</div>
                 </div>
                 <div className="my-4 flex w-full justify-between font-semibold">
                   <div className="flex flex-col items-center justify-start gap-1 leading-3">
@@ -115,8 +118,16 @@ const index = (data) => {
                   </div>
                 </div>
                 <div className="my-4 flex justify-between">
-                  <div className="">Following: {`${data.following}`}</div>
-                  <div>Followers: {`${data.followers}`}</div>
+                  <div className="flex items-center justify-center gap-1 font-bold">
+                    <div>Following:</div>
+                    <BsFillPeopleFill />
+                    <div>{data.following}</div>
+                  </div>
+                  <div className="flex items-center justify-center gap-1 font-bold">
+                    <div>Followers:</div>
+                    <BsFillPeopleFill />
+                    <div>{data.followers}</div>
+                  </div>
                 </div>
                 <div>
                   {languages.map((language, index) => {
@@ -165,31 +176,14 @@ const index = (data) => {
 
 export async function getServerSideProps(context) {
   const { username } = context.query
-  // const res = await fetch(
-  //   `https://Github-Profile-Card-Server.st1llwater.repl.co/api/stats/${username}`
-  // )
-  // const data = await res.json()
+  const res = await fetch(
+    `https://ghdevcard.herokuapp.com/api/stats/${username}`
+  )
+  const data = await res.json()
 
   return {
     props: {
-      username: 'ST1LLWATER',
-      avatar: 'https://avatars.githubusercontent.com/u/62516824?v=4',
-      commits: 508,
-      stars: 18,
-      followers: 62,
-      following: 42,
-      repos: 59,
-      languages: {
-        JavaScript: 32,
-        CSS: 5,
-        HTML: 5,
-        Java: 1,
-        'C++': 1,
-        'Jupyter Notebook': 1,
-      },
-      created: '2020-03-22T17:55:52Z',
-      totalIssues: 25,
-      totalPulls: 18,
+      data,
     },
   }
 }

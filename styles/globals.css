@@ -36,6 +36,11 @@ progress::-webkit-progress-value {
   border-radius: 7px;
 }
 
+.bg {
+  background-image: url('../assets/design-tools.jpg');
+  filter: blur(2px);
+}
+
 .card_outer {
   position: relative;
   user-select: none;
@@ -65,6 +70,18 @@ progress::-webkit-progress-value {
 }
 
 .cover {
+  /* background: linear-gradient(
+    to right,
+    rgb(29, 78, 216),
+    rgb(30, 64, 175),
+    rgb(17, 24, 39)
+  ); */
+  background: linear-gradient(
+    to right,
+    rgb(15, 23, 42),
+    rgb(88, 28, 135),
+    rgb(15, 23, 42)
+  );
   position: relative;
   background-image: url('https://media.istockphoto.com/photos/blue-mesh-gradient-blurred-motion-abstract-background-picture-id1185747322?k=20&m=1185747322&s=612x612&w=0&h=Sy7s4nSTKEbDFY1HRAijhMJVRZd4_9rACOOjkkNa5bs=');
   background-size: cover;

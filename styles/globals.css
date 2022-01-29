@@ -90,11 +90,18 @@ progress::-webkit-progress-value {
   background-attachment: fixed;
   height: 560px;
   width: 440px;
-  min-width: 440px;
-  min-height: 560px;
+  /* min-width: 440px;
+  min-height: 560px; */
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+@media (max-width: 380px) {
+  .cover {
+    height: 480px;
+    width: 360px;
+  }
 }
 
 .card_content {

@@ -64,7 +64,7 @@ const index = ({ data }) => {
     <>
       <div className="flex h-screen w-screen items-center justify-center overflow-hidden rounded text-white">
         <div className="bg absolute h-screen w-screen"></div>
-        <Tilt tiltMaxAngleX={8} tiltMaxAngleY={8}>
+        <Tilt tiltMaxAngleX={8} tiltMaxAngleY={8} gyroscope={true}>
           <div className="cover rounded-2xl">
             <div className="card_outer h-11/12 z-10 flex flex-col bg-gray-800 p-4">
               <div className="absolute right-[-15px] top-20 z-[-1] box-border w-72 overflow-hidden rounded-full border-t-8 border-l-8 border-amber-500 opacity-50">
@@ -213,6 +213,7 @@ export async function getServerSideProps(context) {
       created: '2020-05-28T07:48:56Z',
       totalIssues: 0,
       totalPulls: 7,
+      forks: 12,
     },
   }
 }

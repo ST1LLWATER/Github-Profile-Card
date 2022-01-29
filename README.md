@@ -1,32 +1,23 @@
 <p align="center">
  <img src="https://i.imgur.com/0d3pAZP.png" align="center" alt="GitHub Readme Stats" />
- <p align="center">Get dynamically generated GitHub profile card!</p>
- <h2 align="center"></h2>
+ <hr>
 </p>
 
-[Get Your Card Here]()
+## Dynamically [Generate](https://github-profile-card-omega.vercel.app/) Your GitHub Profile Card
 
-| Example |
-|---|
-| <img src="./assest/profile-card.gif" align="center" alt="GitHub Readme Stats" width=300/>|
 
-### Profile Card API Schema
-- `Avatar`
-- `Total Commits`
-- `Total Stars`
-- `Followers`
-- `Following`
-- `Repositories (Public)`
-- `Top Languages`
-- `Total Issues`
-- `Total Pull Requests`
+## Preview
+| Card | Profile Card API Schema |
+|---|---|
+| <img src="./assets/profile-card.gif" align="center" alt="GitHub Readme Stats" width=400/>| `Avatar`<br><br>`Total Commits`<br><br>`Total Stars`<br><br>`Followers`<br><br>`Following`<br><br>`Repositories (Public)`<br><br>`Top Languages`<br><br>`Total Issues`<br><br>`Total Pull Requests`<br><br>`Forks` |
 
-### Endpoints
--
--
+### API Endpoint
+```
+https://ghdevcard.herokuapp.com/api/stats/${username}
+```
 
-### How
-- Utilizing GitHub's API to retrieve information about a user and present it in a cool way.
+### How we did it
+- Making use of GitHub's API to retrieve information about a user and present it visually.
 - Technologies Used -
   - Front-end: **NextJS** and **Tailwind CSS**
   - Back-end: **ExpressJS**

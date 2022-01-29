@@ -7,32 +7,29 @@ export default function Home() {
   return (
     <div
       className={
-        'flex h-screen w-screen flex-col items-center justify-between bg-gray-800 p-10'
+        'flex h-screen w-screen flex-col items-center justify-center gap-14 bg-gray-800 p-10'
       }
     >
-      <div
-        className={
-          'flex w-full items-center justify-center text-9xl font-bold text-white'
-        }
-      >
-        DevCards
+      <div className={'text-7xl font-bold text-white sm:text-9xl'}>
+        Github DevCard
       </div>
-      <div className={'flex items-center justify-center'}>
+      <div className={'flex w-screen items-center justify-center p-4 lg:w-1/2'}>
         <input
-          type={'text'}
+          type="text"
+          placeholder="Github Username"
           onChange={(e) => setUsername(e.target.value)}
           value={username}
           className={
-            'h-12 w-full rounded-lg border-2 border-gray-600 bg-gray-700 p-2 text-white'
+            'h-12 w-4/5 rounded-lg border-2 border-gray-600 bg-gray-700 p-2 text-white'
           }
         />
         <button
           onClick={() => {
             router.push(`/${username}`)
           }}
-          className={'ml-3 h-12 rounded-lg bg-amber-500 p-2'}
+          className={'ml-3 h-12 w-1/5 rounded-lg bg-amber-500 p-2'}
         >
-          Search
+          Go
         </button>
       </div>
       <div

@@ -67,7 +67,7 @@ const index = ({ data }) => {
         <Tilt tiltMaxAngleX={8} tiltMaxAngleY={8}>
           <div className="cover rounded-2xl">
             <div className="card_outer h-11/12 z-10 flex flex-col bg-gray-800 p-4">
-              <div className="absolute right-[-15px] top-20 z-[-1] w-80 overflow-hidden rounded-full opacity-50">
+              <div className="absolute right-[-15px] top-20 z-[-1] box-border w-72 overflow-hidden rounded-full border-t-8 border-l-8 border-amber-500 opacity-50">
                 <img className="object-cover" src={data.avatar} alt="" />
               </div>
               <div className="my-2 flex items-center justify-start gap-3">
@@ -186,6 +186,29 @@ export async function getServerSideProps(context) {
       data,
     },
   }
+
+  // return {
+  //   props: {
+  //     username: 'N-Deepika',
+  //     avatar: 'https://avatars.githubusercontent.com/u/66058598?v=4',
+  //     commits: 181,
+  //     stars: 0,
+  //     followers: 16,
+  //     following: 14,
+  //     repos: 27,
+  //     languages: {
+  //       JavaScript: 7,
+  //       Python: 3,
+  //       CSS: 2,
+  //       EJS: 3,
+  //       HTML: 2,
+  //       'Jupyter Notebook': 4,
+  //     },
+  //     created: '2020-05-28T07:48:56Z',
+  //     totalIssues: 0,
+  //     totalPulls: 7,
+  //   },
+  // }
 }
 
 export default index

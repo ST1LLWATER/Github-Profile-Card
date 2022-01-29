@@ -1,27 +1,32 @@
-# Next.js + Tailwind CSS Example
+<p align="center">
+ <img src="https://i.imgur.com/0d3pAZP.png" align="center" alt="GitHub Readme Stats" />
+ <p align="center">Get dynamically generated GitHub profile card!</p>
+ <h2 align="center"></h2>
+</p>
 
-This example shows how to use [Tailwind CSS](https://tailwindcss.com/) [(v3.0)](https://tailwindcss.com/blog/tailwindcss-v3) with Next.js. It follows the steps outlined in the official [Tailwind docs](https://tailwindcss.com/docs/guides/nextjs).
+[Get Your Card Here]()
 
-## Preview
+| Example |
+|---|
+| <img src="./assest/profile-card.gif" align="center" alt="GitHub Readme Stats" width=300/>|
 
-Preview the example live on [StackBlitz](http://stackblitz.com/):
+### Profile Card API Schema
+- `Avatar`
+- `Total Commits`
+- `Total Stars`
+- `Followers`
+- `Following`
+- `Repositories (Public)`
+- `Top Languages`
+- `Total Issues`
+- `Total Pull Requests`
 
-[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/vercel/next.js/tree/canary/examples/with-tailwindcss)
+### Endpoints
+-
+-
 
-## Deploy your own
-
-Deploy the example using [Vercel](https://vercel.com?utm_source=github&utm_medium=readme&utm_campaign=next-example):
-
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/git/external?repository-url=https://github.com/vercel/next.js/tree/canary/examples/with-tailwindcss&project-name=with-tailwindcss&repository-name=with-tailwindcss)
-
-## How to use
-
-Execute [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app) with [npm](https://docs.npmjs.com/cli/init) or [Yarn](https://yarnpkg.com/lang/en/docs/cli/create/) to bootstrap the example:
-
-```bash
-npx create-next-app --example with-tailwindcss with-tailwindcss-app
-# or
-yarn create next-app --example with-tailwindcss with-tailwindcss-app
-```
-
-Deploy it to the cloud with [Vercel](https://vercel.com/new?utm_source=github&utm_medium=readme&utm_campaign=next-example) ([Documentation](https://nextjs.org/docs/deployment)).
+### How
+- Utilizing GitHub's API to retrieve information about a user and present it in a cool way.
+- Technologies Used -
+  - Front-end: **NextJS** and **Tailwind CSS**
+  - Back-end: **ExpressJS**

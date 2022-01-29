@@ -8,6 +8,7 @@ const index = (data) => {
   console.log(data)
   const [languages, setLanguages] = useState([])
   const [allLanguages, setAllLanguages] = useState([])
+  const [percentage, setPercentage] = useState(null)
   // let languages = Object.keys(data.languages)
   // let allLanguages = [...languages]
   // languages.splice(3, languages.length)
@@ -20,6 +21,16 @@ const index = (data) => {
     setLanguages(languages)
   }, [])
 
+  useEffect(() => {
+    if (languages.length > 0) {
+      let sum = 0
+      for (let i = 0; i < 3; i++) {
+        sum += data.languages[allLanguages[i]]
+      }
+      setPercentage(sum)
+    }
+  }, [languages])
+
   const slider = useRef(null)
   let mouseDown = false
   let startX, scrollLeft
@@ -31,10 +42,6 @@ const index = (data) => {
   }
   const stopDragging = () => {
     mouseDown = false
-  }
-
-  function handleDelete() {
-    dispatch({ type: 'REMOVE_ANIME', id: props.id })
   }
 
   function mouseMoveEvent(e) {
@@ -59,6 +66,9 @@ const index = (data) => {
               }}
               className="card_outer h-11/12 z-10 flex flex-col bg-gray-800 p-4"
             >
+              <div className="absolute right-[-15px] top-20 z-[-1] w-72 overflow-hidden rounded-full opacity-50">
+                <img className="object-cover" src={data.avatar} alt="" />
+              </div>
               <div className="my-2 flex items-center justify-start gap-3">
                 <div className="w-14 overflow-hidden rounded-full">
                   <img
@@ -74,7 +84,7 @@ const index = (data) => {
                   <div className="text-3xl font-semibold">{data.commits}</div>
                   <div>Commits</div>
                 </div>
-                <div className="my-4 flex w-full justify-between">
+                <div className="my-4 flex w-full justify-between font-semibold">
                   <div className="flex flex-col items-center justify-start gap-1 leading-3">
                     <div className="flex items-center gap-1">
                       <AiTwotoneStar /> Stars
@@ -109,14 +119,19 @@ const index = (data) => {
                   <div>Followers: {`${data.followers}`}</div>
                 </div>
                 <div>
-                  {languages.map((language) => {
+                  {languages.map((language, index) => {
                     return (
                       <>
                         <div className="my-2 leading-4">
                           <div>{language}</div>
-                          <progress id="progress" value="10" max="100">
-                            30%
-                          </progress>
+                          <progress
+                            id="progress"
+                            value={
+                              (data.languages[language] * 100) /
+                              (percentage / 3)
+                            }
+                            max={100}
+                          ></progress>
                         </div>
                       </>
                     )
